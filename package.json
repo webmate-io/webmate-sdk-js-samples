@@ -14,7 +14,7 @@
   "dependencies": {
     "request": "2.88.0",
     "request-promise": "4.2.2",
-    "webmate-sdk-js": "file:../webmate-sdk-js",
+    "webmate-sdk-js": "0.28.0",
     "immutable": "^3.8.2",
     "rxjs": "^6.5.2"
   },
@@ -23,18 +23,18 @@
     "@types/mocha": "^2.2.44",
     "@types/request-promise": "4.1.42",
     "@types/selenium-webdriver": "4.0.6",
+    "@wdio/utils": "5.16.15",
     "chai": "^4.1.2",
     "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-typescript": "^3.2.3",
-    "mocha": "^4.0.1",
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^5.0.1",
+    "mocha": "^7.1.2",
     "mochawesome": "^2.3.1",
     "selenium-webdriver": "^4.0.0-alpha.1",
     "ts-node": "3.3.0",
     "tslib": "1.7.1",
     "tslint": "5.7.0",
     "typescript": "3.5.1",
-    "webdriverio": "5.18.4",
-    "@wdio/utils": "5.16.15"
+    "webdriverio": "5.18.4"
   }
 }

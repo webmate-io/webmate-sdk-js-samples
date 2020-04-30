@@ -77,6 +77,6 @@ describe('Webmate SDK', function () {
             }),
             tap(() => console.log("Successfully deleted device"))
 
-        ).toPromise().catch(e => console.error(`Got an error: ${e}`));
+        ).toPromise().catch(e => console.error('Got an error:', e.message));
     });
 });
