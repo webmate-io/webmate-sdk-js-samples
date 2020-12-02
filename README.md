@@ -5,7 +5,7 @@ This project demonstrates how to interact with the webmate API using the officia
 
 Before running the tests, enter your webmate credentials in `credentials.ts`.
 
-It contains two different tests. The test located in `devise.test.ts` demonstrates the lifecycle of a device. 
+It contains two different tests. The test located in `device.test.ts` demonstrates the lifecycle of a device. 
 The test in `selenium-test.test.ts` creates two browser sessions by executing the same selenium test using two different browsers. 
 It then demonstrates how to use the browser sessions to start a cross browser test and query the resulting artifacts and results.   
    
