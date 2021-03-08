@@ -1,14 +1,22 @@
 {
   "name": "webmate-sdk-js-samples",
-  "version": "0.28.0",
-  "description": "An example project which demonstrates the usage of the webmate typescript sdk",
+  "version": "0.29.0",
+  "description": "An example project which demonstrates the usage of the webmate JavaScript and TypeScript SDK",
+  "keywords": [
+    "webmate"
+  ],
   "scripts": {
+    "build": "tsc",
     "test": "tsc && mocha",
     "cb-test": "tsc && mocha -g 'crossbrowserjob'",
     "device-test": "tsc && mocha -g 'device'",
-    "build": "tsc"
+    "cucumber-test": "./node_modules/.bin/cucumber-js",
+    "lint": "eslint . --ext .ts"
   },
   "author": "Sebastian Kappler",
+  "contributors": [
+    "Timo Gühring"
+  ],
   "license": "Apache-2.0",
   "private": true,
   "dependencies": {
@@ -16,9 +24,10 @@
     "request-promise": "4.2.2",
     "webmate-sdk-js": "0.28.0",
     "immutable": "^3.8.2",
-    "rxjs": "^6.5.2"
+    "rxjs": "6.6.6"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^7.0.0",
     "@types/chai": "^4.0.5",
     "@types/mocha": "^2.2.44",
     "@types/request-promise": "4.1.42",
