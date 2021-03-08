@@ -22,7 +22,7 @@
   "dependencies": {
     "request": "2.88.0",
     "request-promise": "4.2.2",
-    "webmate-sdk-js": "0.28.0",
+    "webmate-sdk-js": "0.29.0",
     "immutable": "^3.8.2",
     "rxjs": "6.6.6"
   },
