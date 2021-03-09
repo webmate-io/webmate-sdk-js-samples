@@ -1,24 +1,17 @@
-# webmate TypeScript and JavaScript SDK Samples
+# webmate TypeScript and JavaScript SDK Samples <img src="https://avatars.githubusercontent.com/u/13346605" alt="webmate logo" width="28"/>
 
-This repository contains examples of how to use the [webmate SDK](https://github.com/webmate-io/webmate-sdk-js).
+This repository contains examples of how to use the official [webmate TypeScript and JavaScript SDK](https://github.com/webmate-io/webmate-sdk-js).
 
 
-## Executing the Tests
-This project demonstrates how to interact with the webmate API using the official webmate SDK for TypeScript and JavaScript.
+# Samples
 
 Before running the tests, enter your webmate credentials in `credentials.ts`.
 
-It contains two different tests. The test located in `device-interaction.test.ts` demonstrates the lifecycle of a device. 
-The test in `selenium-test.test.ts` creates two browser sessions by executing the same selenium test using two different browsers. 
-It then demonstrates how to use the browser sessions to start a cross browser test and query the resulting artifacts and results.   
-   
-To build the TypeScript tests located is `src/` run `npm run build`. This will create the according `.js` tests in the `test/` directory.
+To build the TypeScript tests located at `src/` run `npm run build`. This will create the according `.js` tests in the `test/` directory.
 
-To run them execute `npm run test`. Please note that running the tests will also build them automatically.
-It is also possible to run the tests separately, using the commands `npm run device-test` and `npm run cb-test` respectively. 
-
-
-# Tests
+To run all tests execute `npm run test`.
+Please note that running the tests will also build them automatically.
+It is also possible to run the tests individually as mentioned in the according description in the table.
 
 <table border="1">
     <tr>

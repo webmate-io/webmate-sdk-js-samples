@@ -9,3 +9,4 @@ export const WEBMATE_SELENIUM_HOST: string = "app.webmate.io";
 export const WEBMATE_SELENIUM_PROTOCOL: string = "https";
 
 export const WEBMATE_API_URL: string = "https://app.webmate.io/api/v1";
+export const WEBMATE_SELENIUM_ADDRESS: string = WEBMATE_SELENIUM_PROTOCOL + "://" + WEBMATE_SELENIUM_HOST + ":" + WEBMATE_SELENIUM_PORT + "/wd/hub";
