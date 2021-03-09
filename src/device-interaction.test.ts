@@ -10,6 +10,13 @@ import {concat, of, throwError} from "rxjs";
 
 should();
 
+/**
+ * The device interaction test shows basic and advanced management of devices, such as deploying, releasing,
+ * uploading apps, uploading images and configuring camera simulation.
+ *
+ * Note that the tests consequently releasing devices after requesting them to enable successive execution of the tests.
+ * Otherwise at some point there were no more available devices to deploy.
+ */
 describe('Device Interaction Test', function () {
 
     let log = logger('tests:device-interaction');
@@ -34,14 +41,22 @@ describe('Device Interaction Test', function () {
         webmateSession = Webmate.startSession(MY_WEBMATE_USER, MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
     });
 
-    it('should deploy an Android device', async() => {
-        log.info('Deploy a device')
+    it('should deploy an Android device and release it afterwards', async() => {
+        log.info('Deploy an Android device')
         let platform = new Platform(PlatformType.ANDROID, "9");
-        await webmateSession.device.requestDeviceByRequirements(MY_WEBMATE_PROJECTID,
-            new DeviceRequest("Sample Device",
-                new Map([['machine.platform', platform.toString()]]))).pipe(map(device => {
-            log.info(`Deployed Android device with id: ${device.id}`)
-        }))
+        let deviceRequest = new DeviceRequest("Sample Device", new Map([['machine.platform', platform.toString()]]));
+        await webmateSession.device.requestDeviceByRequirements(MY_WEBMATE_PROJECTID, deviceRequest).pipe(
+            tap(device => {
+                log.info(`Deployed an Android device with id: ${device.id}`)
+            }),
+            delay(3000),
+            mergeMap(device => {
+                return webmateSession.device.releaseDevice(device.id);
+            }),
+            tap(() => {
+                log.info(`Deleted Android device`)
+            })
+        )
     });
 
     it('should test deploying a Windows 10 machine and delete it afterwards', async() => {
@@ -52,7 +67,7 @@ describe('Device Interaction Test', function () {
         // Get all deployed devices
         await webmateSession.device.getDeviceIdsForProject(MY_WEBMATE_PROJECTID).pipe(
             mergeMap(devices => {
-                console.log(`Found existing devices ${devices}`);
+                log.info(`Found existing devices ${devices}`);
                 baseNumberDevices = devices.length;
                 existingDevices = devices;
 
@@ -70,16 +85,16 @@ describe('Device Interaction Test', function () {
             mergeMap(newDevices => {
                 // Find id of new device
                 newDeviceId = newDevices.filter(d => existingDevices.indexOf(d) == -1)[0];
-                console.log("Successfully deployed device with id: " + newDeviceId);
+                log.info("Successfully deployed device with id: " + newDeviceId);
                 // Delete the new device again
-                console.log("Going to delete device " + newDeviceId);
+                log.info("Going to delete device " + newDeviceId);
                 return webmateSession.device.releaseDevice(newDeviceId);
             }),
             mergeMap(() => {
                 // Check if device has been deleted
                 return waitForNumberOfDevices(baseNumberDevices);
             }),
-            tap(() => console.log("Successfully deleted device"))
+            tap(() => log.info("Successfully deleted device"))
 
         ).toPromise().catch(e => console.error('Got an error:', e.message));
     });
@@ -89,7 +104,7 @@ describe('Device Interaction Test', function () {
         await webmateSession.packages.uploadPackage(MY_WEBMATE_PROJECTID, apkFilePath, "Example app", "apk").pipe(
             delay(2000),
             tap((pkgInfo: Package) => {
-                console.log(`App ${pkgInfo.id} has been uploaded`);
+                log.info(`App ${pkgInfo.id} has been uploaded`);
             }),
             mergeMap((pkgInfo: Package) => {
                 let platform = new Platform(PlatformType.ANDROID, "10");
@@ -102,14 +117,21 @@ describe('Device Interaction Test', function () {
                 );
             }),
             tap(({newDevice, pkgInfo}) => {
-                console.log(`Device ${newDevice.id} has been deployed`);
+                log.info(`Device ${newDevice.id} has been deployed`);
             }),
             delay(2000),
-            map(({newDevice, pkgInfo}) => {
-               return webmateSession.device.installAppOnDevice(newDevice.id, pkgInfo.id);
+            mergeMap(({newDevice, pkgInfo}) => {
+               return webmateSession.device.installAppOnDevice(newDevice.id, pkgInfo.id).pipe(
+                   map(() => {
+                       return newDevice
+                   })
+               );
             }),
-            map(_ => {
-                console.log(`App has been installed on device`);
+            mergeMap((newDevice) => {
+                return webmateSession.device.releaseDevice(newDevice.id);
+            }),
+            tap(() => {
+                log.info(`App has been installed on device`);
             })
         ).toPromise();
     });
@@ -123,7 +145,17 @@ describe('Device Interaction Test', function () {
             mergeMap((newDevice: DeviceDTO) => {
                 let imageFilePath = path.resolve('./src/res/qrcode.png');
                 return webmateSession.device.uploadImageToDeviceAndSetForCameraSimulationWithFilePath(MY_WEBMATE_PROJECTID,
-                    imageFilePath, "MyQRCode", ImageType.PNG, newDevice.id);
+                    imageFilePath, "MyQRCode", ImageType.PNG, newDevice.id).pipe(
+                        map(imageId => {
+                            return {newDevice, imageId}
+                        })
+                );
+            }),
+            tap(({newDevice, imageId}) => {
+                log.info(`Image ${imageId} was uploaded to device ${newDevice.id} and selected for the camera simulation`);
+            }),
+            mergeMap(({newDevice, imageId}) => {
+                return webmateSession.device.releaseDevice(newDevice.id);
             })
         ).toPromise();
     });
