@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "tsc && mocha",
+    "test": "tsc && mocha && ./node_modules/.bin/cucumber-js && protractor ./test/protractor/conf.js",
     "cb-test": "tsc && mocha -g 'Crossbrowser'",
     "device-test": "tsc && mocha -g 'device'",
     "selenium-test": "tsc && mocha -g 'Selenium'",
