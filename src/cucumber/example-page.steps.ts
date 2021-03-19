@@ -25,6 +25,14 @@ import BrowserObject = WebdriverIO.BrowserObject;
 import {should} from "chai";
 should();
 
+/**
+ * This is example step file for the toy page: http://www.examplepage.org/form_interaction
+ * The defined steps are referenced in the cucumber file example.feature.
+ *
+ * See the cucumber documentation for more information about cucumber hooks and keywords:
+ * - https://cucumber.io/docs/gherkin/reference/
+ * - https://cucumber.io/docs/cucumber/api/#hooks
+ */
 
 let webmateSession: WebmateAPISession;
 let testRun: TestRun;
