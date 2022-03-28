@@ -31,11 +31,11 @@ describe('URL Based Crossbrowser Test', function () {
 
     it('should execute a crossbrowser test', async() => {
         // Specify the reference browser
-        let referenceBrowser = new Browser(BrowserType.FIREFOX, "81", new Platform(PlatformType.WINDOWS, "10", "64"));
+        let referenceBrowser = new Browser(BrowserType.FIREFOX, "91", new Platform(PlatformType.WINDOWS, "10", "64"));
 
         // Specify the browsers that should be compared to the reference browser
         let crossBrowsers = [
-            new Browser(BrowserType.CHROME, "86", new Platform(PlatformType.WINDOWS, "10", "64")),
+            new Browser(BrowserType.CHROME, "96", new Platform(PlatformType.WINDOWS, "10", "64")),
             new Browser(BrowserType.INTERNET_EXPLORER, "11", new Platform(PlatformType.WINDOWS, "10", "64"))
         ];
 
@@ -59,7 +59,7 @@ describe('URL Based Crossbrowser Test', function () {
             }),
             tap(info => {
                 log.info(`Finished waiting for TestRun: ${info.toString()}`);
-                log.info(`The result is available at: https://app.webmate.io/#/projects/${info.projectId}/testlab/testruns/${info.testRunId}`);
+                log.info(`The result is available at: https://demo.webmate.io/#/projects/${info.projectId}/testlab/testruns/${info.testRunId}`);
             })
         ).toPromise();
     });

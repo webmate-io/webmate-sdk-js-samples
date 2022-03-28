@@ -43,7 +43,7 @@ describe('Device Interaction Test', function () {
 
     it('should deploy an Android device and release it afterwards', async() => {
         log.info('Deploy an Android device')
-        let platform = new Platform(PlatformType.ANDROID, "9");
+        let platform = new Platform(PlatformType.ANDROID, "11");
         let deviceRequest = new DeviceRequest("Sample Device", new Map([['machine.platform', platform.toString()]]));
         await webmateSession.device.requestDeviceByRequirements(MY_WEBMATE_PROJECTID, deviceRequest).pipe(
             tap(device => {
@@ -107,7 +107,7 @@ describe('Device Interaction Test', function () {
                 log.info(`App ${pkgInfo.id} has been uploaded`);
             }),
             mergeMap((pkgInfo: Package) => {
-                let platform = new Platform(PlatformType.ANDROID, "10");
+                let platform = new Platform(PlatformType.ANDROID, "11");
                 let deviceRequirements = new Map([['machine.platform', platform.toString()]]);
                 let deviceRequest = new DeviceRequest("Test Device", deviceRequirements);
                 return webmateSession.device.requestDeviceByRequirements(MY_WEBMATE_PROJECTID, deviceRequest).pipe(
@@ -137,8 +137,8 @@ describe('Device Interaction Test', function () {
     });
 
     it('should upload an image and use it for camera simulation', async() => {
-        // Deploy new device with Platform Android 10
-        let platform = new Platform(PlatformType.ANDROID, "10");
+        // Deploy new device with Platform Android 11
+        let platform = new Platform(PlatformType.ANDROID, "11");
         let deviceRequirements = new Map([['machine.platform', platform.toString()]]);
         let deviceRequest = new DeviceRequest("Test Device", deviceRequirements);
         await webmateSession.device.requestDeviceByRequirements(MY_WEBMATE_PROJECTID, deviceRequest).pipe(
