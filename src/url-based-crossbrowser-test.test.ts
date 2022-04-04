@@ -59,7 +59,8 @@ describe('URL Based Crossbrowser Test', function () {
             }),
             tap(info => {
                 log.info(`Finished waiting for TestRun: ${info.toString()}`);
-                log.info(`The result is available at: https://demo.webmate.io/#/projects/${info.projectId}/testlab/testruns/${info.testRunId}`);
+                let webmateUrl = WEBMATE_API_URL.substring(0,WEBMATE_API_URL.length-6);
+                log.info(`The result is available at: ${webmateUrl}#/projects/${info.projectId}/testlab/testruns/${info.testRunId}`);
             })
         ).toPromise();
     });
