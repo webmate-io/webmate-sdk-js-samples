@@ -10,7 +10,6 @@ import {
     MY_WEBMATE_USER,
     WEBMATE_API_URL,
     WEBMATE_SELENIUM_HOST,
-    WEBMATE_SELENIUM_PORT,
     WEBMATE_SELENIUM_PROTOCOL
 } from "./credentials";
 import BrowserObject = WebdriverIO.BrowserObject;
@@ -54,7 +53,6 @@ describe('Selenium Demo Test Suite', function () {
             },
             hostname: WEBMATE_SELENIUM_HOST,
             protocol: WEBMATE_SELENIUM_PROTOCOL,
-            port: WEBMATE_SELENIUM_PORT,
             connectionRetryTimeout: 240000,
             connectionRetryCount: 1,
             logLevel: 'debug'
