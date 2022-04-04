@@ -37,7 +37,7 @@ describe('Selenium Demo Test Suite', function () {
         };
 
         let platform = new Platform(PlatformType.WINDOWS, "10", "64");
-        let browser = new Browser(BrowserType.CHROME, "83", platform);
+        let browser = new Browser(BrowserType.CHROME, "99", platform);
         await executeTestInBrowser(browser).catch(errorHandler);
     });
 

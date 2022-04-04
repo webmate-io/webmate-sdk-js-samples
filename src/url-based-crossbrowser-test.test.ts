@@ -31,11 +31,11 @@ describe('URL Based Crossbrowser Test', function () {
 
     it('should execute a crossbrowser test', async() => {
         // Specify the reference browser
-        let referenceBrowser = new Browser(BrowserType.FIREFOX, "81", new Platform(PlatformType.WINDOWS, "10", "64"));
+        let referenceBrowser = new Browser(BrowserType.FIREFOX, "91", new Platform(PlatformType.WINDOWS, "10", "64"));
 
         // Specify the browsers that should be compared to the reference browser
         let crossBrowsers = [
-            new Browser(BrowserType.CHROME, "86", new Platform(PlatformType.WINDOWS, "10", "64")),
+            new Browser(BrowserType.CHROME, "96", new Platform(PlatformType.WINDOWS, "10", "64")),
             new Browser(BrowserType.INTERNET_EXPLORER, "11", new Platform(PlatformType.WINDOWS, "10", "64"))
         ];
 
@@ -51,7 +51,7 @@ describe('URL Based Crossbrowser Test', function () {
             "CrossBrowser Test via SDK",
             ExpeditionSpecFactory.makeUrlListExpeditionSpec(urls, referenceBrowser),
             [...(crossBrowsers.map(browser => ExpeditionSpecFactory.makeUrlListExpeditionSpec(urls, browser)))]
-        ).withTagName("SDK").withTagName("Release", "2020-11");
+        ).withTagName("SDK").withTagName("Release", "2022-03");
 
         await webmateSession.testMgmt.startExecutionWithBuilder(testExecutionSpecBuilder).pipe(
             mergeMap(testRun => {
@@ -59,7 +59,8 @@ describe('URL Based Crossbrowser Test', function () {
             }),
             tap(info => {
                 log.info(`Finished waiting for TestRun: ${info.toString()}`);
-                log.info(`The result is available at: https://app.webmate.io/#/projects/${info.projectId}/testlab/testruns/${info.testRunId}`);
+                let webmateUrl = WEBMATE_API_URL.substring(0,WEBMATE_API_URL.length-6);
+                log.info(`The result is available at: ${webmateUrl}#/projects/${info.projectId}/testlab/testruns/${info.testRunId}`);
             })
         ).toPromise();
     });
