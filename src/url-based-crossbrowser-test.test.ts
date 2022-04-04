@@ -51,7 +51,7 @@ describe('URL Based Crossbrowser Test', function () {
             "CrossBrowser Test via SDK",
             ExpeditionSpecFactory.makeUrlListExpeditionSpec(urls, referenceBrowser),
             [...(crossBrowsers.map(browser => ExpeditionSpecFactory.makeUrlListExpeditionSpec(urls, browser)))]
-        ).withTagName("SDK").withTagName("Release", "2020-11");
+        ).withTagName("SDK").withTagName("Release", "2022-03");
 
         await webmateSession.testMgmt.startExecutionWithBuilder(testExecutionSpecBuilder).pipe(
             mergeMap(testRun => {
