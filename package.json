@@ -22,7 +22,7 @@
   "license": "Apache-2.0",
   "private": true,
   "dependencies": {
-    "webmate-sdk-js": "0.29.2",
+    "webmate-sdk-js": "0.29.10",
     "immutable": "^3.8.2",
     "rxjs": "6.6.6"
   },
