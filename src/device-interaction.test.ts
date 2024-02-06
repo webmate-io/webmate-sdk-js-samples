@@ -56,7 +56,7 @@ describe('Device Interaction Test', function () {
             tap(() => {
                 log.info(`Deleted Android device`)
             })
-        )
+        ).toPromise();
     });
 
     it('should test deploying a Windows 10 machine and delete it afterwards', async() => {

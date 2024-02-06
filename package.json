@@ -22,9 +22,9 @@
   "license": "Apache-2.0",
   "private": true,
   "dependencies": {
-    "webmate-sdk-js": "0.29.10",
     "immutable": "^3.8.2",
-    "rxjs": "6.6.6"
+    "rxjs": "6.6.6",
+    "webmate-sdk-js": "^0.30.0"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^7.0.0",
