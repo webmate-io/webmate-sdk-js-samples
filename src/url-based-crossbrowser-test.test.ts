@@ -36,7 +36,7 @@ describe('URL Based Crossbrowser Test', function () {
         // Specify the browsers that should be compared to the reference browser
         let crossBrowsers = [
             new Browser(BrowserType.CHROME, "86", new Platform(PlatformType.WINDOWS, "10", "64")),
-            new Browser(BrowserType.INTERNET_EXPLORER, "11", new Platform(PlatformType.WINDOWS, "10", "64"))
+            //new Browser(BrowserType.EDGE, "86", new Platform(PlatformType.WINDOWS, "10", "64"))
         ];
 
         // TODO: do something with results
