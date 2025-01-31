@@ -31,12 +31,12 @@ describe('URL Based Crossbrowser Test', function () {
 
     it('should execute a crossbrowser test', async() => {
         // Specify the reference browser
-        let referenceBrowser = new Browser(BrowserType.FIREFOX, "81", new Platform(PlatformType.WINDOWS, "10", "64"));
+        let referenceBrowser = new Browser(BrowserType.FIREFOX, "106", new Platform(PlatformType.WINDOWS, "11", "64"));
 
         // Specify the browsers that should be compared to the reference browser
         let crossBrowsers = [
-            new Browser(BrowserType.CHROME, "86", new Platform(PlatformType.WINDOWS, "10", "64")),
-            //new Browser(BrowserType.EDGE, "86", new Platform(PlatformType.WINDOWS, "10", "64"))
+            new Browser(BrowserType.CHROME, "106", new Platform(PlatformType.WINDOWS, "11", "64")),
+            //new Browser(BrowserType.EDGE, "106", new Platform(PlatformType.WINDOWS, "11", "64"))
         ];
 
         // TODO: do something with results

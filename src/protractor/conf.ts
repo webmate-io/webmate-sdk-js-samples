@@ -12,7 +12,7 @@ export let config: Config = {
         'apikey': MY_WEBMATE_APIKEY,
         'project': MY_WEBMATE_PROJECTID,
         'browserName': 'CHROME',
-        'version': '83',
-        'platform': 'WINDOWS_10_64',
+        'version': '106',
+        'platform': 'WINDOWS_11_64',
     },
 }

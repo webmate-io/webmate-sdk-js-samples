@@ -73,7 +73,7 @@ describe('Device Interaction Test', function () {
 
                 // Request a Windows 10 device
                 let windows10Request = "Win10 Request";
-                let platform = new Platform(PlatformType.WINDOWS, "10", "64");
+                let platform = new Platform(PlatformType.WINDOWS, "11", "64");
                 let deviceRequirements = new Map([['machine.platform', platform.toString()]]);
                 let deviceRequest = new DeviceRequest(windows10Request, deviceRequirements);
                 return webmateSession.device.requestDeviceByRequirements(MY_WEBMATE_PROJECTID, deviceRequest);

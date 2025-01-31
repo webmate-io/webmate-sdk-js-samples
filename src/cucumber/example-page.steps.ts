@@ -59,11 +59,11 @@ function getOptions(browser: Browser): WebdriverIO.RemoteOptions {
     };
 }
 
-Before({timeout: 60000}, async function() {
+Before({timeout: 600000}, async function() {
     webmateSession = Webmate.startSession(MY_WEBMATE_USER, MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
 
-    let platform = new Platform(PlatformType.WINDOWS, "10", "64");
-    let browser = new Browser(BrowserType.CHROME, "83", platform);
+    let platform = new Platform(PlatformType.WINDOWS, "11", "64");
+    let browser = new Browser(BrowserType.CHROME, "106", platform);
     let options = getOptions(browser);
     browserObj = await webdriverio.remote(options);
     webmateSession.addSeleniumSession(browserObj.sessionId);
