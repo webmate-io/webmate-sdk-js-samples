@@ -9,7 +9,7 @@ import {
 import {
     MY_WEBMATE_APIKEY,
     MY_WEBMATE_PROJECTID,
-    MY_WEBMATE_USER, WEBMATE_API_URL
+    WEBMATE_API_URL
 } from "./credentials";
 import * as Webmate from "webmate-sdk-js";
 import {mergeMap, tap} from "rxjs/operators";
@@ -26,7 +26,7 @@ describe('URL Based Crossbrowser Test', function () {
 
     before(function () {
         // The user data can be configured in credentials.ts
-        webmateSession = Webmate.startSession(MY_WEBMATE_USER, MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
+        webmateSession = Webmate.startSession(MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
     });
 
     it('should execute a crossbrowser test', async() => {

@@ -13,7 +13,6 @@ import {
 import {
     MY_WEBMATE_APIKEY,
     MY_WEBMATE_PROJECTID,
-    MY_WEBMATE_USER,
     WEBMATE_API_URL,
     WEBMATE_SELENIUM_HOST,
     WEBMATE_SELENIUM_PORT,
@@ -46,7 +45,6 @@ function getOptions(browser: Browser): WebdriverIO.RemoteOptions {
             version: browser.version,
             platform: browser.platform.toString(),
             // @ts-ignore
-            email: MY_WEBMATE_USER,
             apikey: MY_WEBMATE_APIKEY,
             project: MY_WEBMATE_PROJECTID
         },
@@ -60,7 +58,7 @@ function getOptions(browser: Browser): WebdriverIO.RemoteOptions {
 }
 
 Before({timeout: 60000}, async function() {
-    webmateSession = Webmate.startSession(MY_WEBMATE_USER, MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
+    webmateSession = Webmate.startSession(MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
 
     let platform = new Platform(PlatformType.WINDOWS, "10", "64");
     let browser = new Browser(BrowserType.CHROME, "83", platform);

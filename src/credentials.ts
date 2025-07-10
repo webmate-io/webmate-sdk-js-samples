@@ -1,6 +1,5 @@
 import {ProjectId} from "webmate-sdk-js";
 
-export const MY_WEBMATE_USER: string = "xxxx@xxxxxxxxx.com";
 export const MY_WEBMATE_APIKEY: string = "xxxxxx-xxxxx-xxxx-ba43-da86b97734eb";
 export const MY_WEBMATE_PROJECTID: ProjectId = "xxxxxx-1b49-4eb0-bb3a-xxxxxxxxx";
 
