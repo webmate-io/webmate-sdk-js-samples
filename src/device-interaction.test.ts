@@ -3,7 +3,7 @@ import {should} from 'chai';
 import logger from '@wdio/logger';
 import * as Webmate from "webmate-sdk-js";
 import {DeviceDTO, DeviceRequest, ImageType, Package, Platform, PlatformType, WebmateAPISession,} from "webmate-sdk-js";
-import {MY_WEBMATE_APIKEY, MY_WEBMATE_PROJECTID, MY_WEBMATE_USER, WEBMATE_API_URL} from "./credentials";
+import {MY_WEBMATE_APIKEY, MY_WEBMATE_PROJECTID, WEBMATE_API_URL} from "./credentials";
 import path from "path";
 import {delay, map, mergeMap, retryWhen, take, tap} from "rxjs/operators";
 import {concat, of, throwError} from "rxjs";
@@ -38,7 +38,7 @@ describe('Device Interaction Test', function () {
 
     before(function () {
         // The user data can be configured in credentials.ts
-        webmateSession = Webmate.startSession(MY_WEBMATE_USER, MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
+        webmateSession = Webmate.startSession(MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
     });
 
     it('should deploy an Android device and release it afterwards', async() => {

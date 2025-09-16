@@ -7,7 +7,6 @@ import {Browser, BrowserType, Platform, PlatformType, TestRunEvaluationStatus, W
 import {
     MY_WEBMATE_APIKEY,
     MY_WEBMATE_PROJECTID,
-    MY_WEBMATE_USER,
     WEBMATE_API_URL,
     WEBMATE_SELENIUM_HOST,
     WEBMATE_SELENIUM_PORT,
@@ -27,7 +26,7 @@ describe('Selenium Demo Test Suite', function () {
 
     before(function () {
         // The user data can be configured in credentials.ts
-        webmateSession = Webmate.startSession(MY_WEBMATE_USER, MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
+        webmateSession = Webmate.startSession(MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
     });
 
     it('should execute a simple selenium test', async() => {
@@ -48,7 +47,6 @@ describe('Selenium Demo Test Suite', function () {
                 version: browser.version,
                 platform: browser.platform.toString(),
                 // @ts-ignore
-                email: MY_WEBMATE_USER,
                 apikey: MY_WEBMATE_APIKEY,
                 project: MY_WEBMATE_PROJECTID
             },

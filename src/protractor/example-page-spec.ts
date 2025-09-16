@@ -2,7 +2,7 @@ import {browser, element, by, By, $, $$, ExpectedConditions} from 'protractor';
 import {TestRunEvaluationStatus, WebmateAPISession} from "webmate-sdk-js";
 import {WebmateSeleniumSession} from "webmate-sdk-js";
 import * as Webmate from "webmate-sdk-js";
-import {MY_WEBMATE_APIKEY, MY_WEBMATE_PROJECTID, MY_WEBMATE_USER, WEBMATE_API_URL} from "../credentials";
+import {MY_WEBMATE_APIKEY, MY_WEBMATE_PROJECTID, WEBMATE_API_URL} from "../credentials";
 
 describe('Protractor Demo Test Suite', () => {
 
@@ -14,7 +14,7 @@ describe('Protractor Demo Test Suite', () => {
         browser.waitForAngularEnabled(false);
 
         // The user data can be configured in credentials.ts
-        webmateSession = Webmate.startSession(MY_WEBMATE_USER, MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
+        webmateSession = Webmate.startSession(MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
     });
 
     beforeEach(async() => {
