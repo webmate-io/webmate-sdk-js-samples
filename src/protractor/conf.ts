@@ -11,7 +11,7 @@ export let config: Config = {
         'wm:apikey': MY_WEBMATE_APIKEY,
         'wm:project': MY_WEBMATE_PROJECTID,
         'browserName': 'CHROME',
-        'version': '83',
-        'platform': 'WINDOWS_10_64',
+        'version': '106',
+        'platform': 'WINDOWS_11_64',
     },
 }
