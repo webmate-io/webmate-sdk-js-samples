@@ -91,13 +91,17 @@ describe('Selenium Demo Test Suite', function () {
             let sucText = await successBox.getText();
             sucText.should.equal("Link Clicked!", "Success text was wrong");
 
+            // docs:start state
             await webmateSession.browserSession.createState("after link").toPromise();
+            // docs:end state
 
+            // docs:start action-pair
             await webmateSession.browserSession.startAction("Click on button").toPromise();
             log.info("Clicking button");
             let bn = await browserObj.$("#bn");
             await bn.click();
             await webmateSession.browserSession.finishAction().toPromise();
+            // docs:end action-pair
 
             await webmateSession.browserSession.startAction("Click on checkbox").toPromise();
             log.info("Clicking on checkbox");
@@ -105,6 +109,7 @@ describe('Selenium Demo Test Suite', function () {
             await ck.click();
             await webmateSession.browserSession.finishAction().toPromise();
 
+            // docs:start nested
             await webmateSession.browserSession.startAction("Click on radio button").toPromise();
             log.info("Clicking radio button");
             let rd = await browserObj.$("#rd");
@@ -112,6 +117,7 @@ describe('Selenium Demo Test Suite', function () {
 
             await webmateSession.browserSession.createState("after radio button").toPromise();
             await webmateSession.browserSession.finishAction("was successful").toPromise();
+            // docs:end nested
 
             log.info("Clicking on element with hover event");
             let mover = await browserObj.$("#mover");
