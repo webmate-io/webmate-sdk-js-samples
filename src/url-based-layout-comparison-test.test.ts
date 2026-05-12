@@ -37,6 +37,7 @@ describe("URL Based Layout Comparison Test", function () {
 
     const log = logger("tests:url-based-layout-comparison");
 
+    // docs:start urls
     const referenceUrls = [
         "http://examplepage.org/index.html",
         "http://examplepage.org/version/current",
@@ -46,6 +47,7 @@ describe("URL Based Layout Comparison Test", function () {
         "http://examplepage.org/index_alternative.html",
         "http://examplepage.org/version/future",
     ];
+    // docs:end urls
 
     let webmateSession: WebmateAPISession;
 
@@ -54,6 +56,7 @@ describe("URL Based Layout Comparison Test", function () {
             MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
     });
 
+    // docs:start compare
     it("should compare two URL sets in Chrome", async function () {
         const platform = new Platform(PlatformType.WINDOWS, "11", "64");
         const browser  = new Browser(BrowserType.CHROME, "106", platform);
@@ -68,7 +71,9 @@ describe("URL Based Layout Comparison Test", function () {
 
         log.info(`Started RegressionLayoutAnalysis job: ${jobRunId}`);
     });
+    // docs:end compare
 
+    // docs:start walk-urls
     async function visitUrls(urls: string[], browser: Browser): Promise<BrowserSessionId> {
         const browserObj: BrowserObject = await webdriverio.remote({
             capabilities: {
@@ -102,4 +107,5 @@ describe("URL Based Layout Comparison Test", function () {
         }
         return browserSessionId;
     }
+    // docs:end walk-urls
 });

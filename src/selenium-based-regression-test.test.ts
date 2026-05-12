@@ -50,9 +50,11 @@ describe("Selenium - Regression Test", function () {
             MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
     });
 
+    // docs:start save-reference
     function saveReferenceSessionId(id: BrowserSessionId): void {
         fs.writeFileSync(REFERENCE_FILE, id, "utf8");
     }
+    // docs:end save-reference
 
     function getReferenceSessionId(): BrowserSessionId | undefined {
         if (!fs.existsSync(REFERENCE_FILE)) return undefined;
@@ -68,6 +70,7 @@ describe("Selenium - Regression Test", function () {
         log.info(`Saved reference BrowserSessionId to ${REFERENCE_FILE}`);
     });
 
+    // docs:start load-and-compare
     it("bCreateExpeditionAndCompareWithReference", async function () {
         const platform = new Platform(PlatformType.WINDOWS, "11", "64");
         const browser  = new Browser(BrowserType.CHROME, "106", platform);
@@ -85,6 +88,7 @@ describe("Selenium - Regression Test", function () {
 
         log.info(`Started RegressionLayoutAnalysis job: ${jobRunId}`);
     });
+    // docs:end load-and-compare
 
     async function executeTest(browser: Browser): Promise<BrowserSessionId> {
         const browserObj: BrowserObject = await webdriverio.remote({

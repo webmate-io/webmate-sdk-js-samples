@@ -1,6 +1,7 @@
 import {PageObject} from "./page-object";
 import BrowserObject = WebdriverIO.BrowserObject;
 
+// docs:start page
 export class ExamplePageFormInteraction extends PageObject {
 
     constructor(browserObj: BrowserObject) {
@@ -51,3 +52,4 @@ export class ExamplePageFormInteraction extends PageObject {
     }
 
 }
+// docs:end page

@@ -53,13 +53,16 @@ describe("Selenium Test Scheduling", function () {
         const device = await scheduleDevice("TestDevice", browser, 5);
         if (!device) throw new Error("No device could be scheduled");
 
+        // docs:start release
         try {
             await executeTestOnSlot(browser, device.slot);
         } finally {
             await webmateSession.device.releaseDevice(device.id).toPromise();
         }
+        // docs:end release
     });
 
+    // docs:start schedule
     async function scheduleDevice(name: string, browser: Browser, maxRetries: number): Promise<DeviceDTO | undefined> {
         const platformStr = `${browser.platform.platformType}_${browser.platform.platformVersion}_${browser.platform.platformArchitecture}`;
         const requirements = new Map<string, any>([
@@ -92,8 +95,10 @@ describe("Selenium Test Scheduling", function () {
         }
         return device;
     }
+    // docs:end schedule
 
     async function executeTestOnSlot(browser: Browser, slot: string): Promise<void> {
+        // docs:start pin-slot
         const browserObj: BrowserObject = await webdriverio.remote({
             capabilities: {
                 browserName: browser.browserType,
@@ -114,6 +119,7 @@ describe("Selenium Test Scheduling", function () {
 
         const seleniumSession: WebmateSeleniumSession =
             webmateSession.addSeleniumSession(browserObj.sessionId);
+        // docs:end pin-slot
 
         try {
             await browserObj.url("http://www.examplepage.org/form_interaction");
