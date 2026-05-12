@@ -6,6 +6,7 @@ import {MY_WEBMATE_APIKEY, MY_WEBMATE_PROJECTID, WEBMATE_API_URL} from "../crede
 
 describe('Protractor Demo Test Suite', () => {
 
+    // docs:start spec-hooks
     let webmateSession: WebmateAPISession;
     let seleniumSession: WebmateSeleniumSession;
 
@@ -21,7 +22,9 @@ describe('Protractor Demo Test Suite', () => {
         let session = await browser.getSession();
         seleniumSession = webmateSession.addSeleniumSession(session.getId());
     })
+    // docs:end spec-hooks
 
+    // docs:start finish
     it('should execute a simple protractor test', async() => {
         try {
             let urlExamplePageFuture: string = "http://www.examplepage.org/version/future";
@@ -84,5 +87,6 @@ describe('Protractor Demo Test Suite', () => {
         }
 
     });
+    // docs:end finish
 
 });

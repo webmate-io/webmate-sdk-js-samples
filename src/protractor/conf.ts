@@ -1,3 +1,4 @@
+// docs:start conf
 import {Config} from 'protractor';
 import {MY_WEBMATE_APIKEY, MY_WEBMATE_PROJECTID, WEBMATE_SELENIUM_ADDRESS} from "../credentials";
 
@@ -15,3 +16,4 @@ export let config: Config = {
         'platform': 'WINDOWS_11_64',
     },
 }
+// docs:end conf
