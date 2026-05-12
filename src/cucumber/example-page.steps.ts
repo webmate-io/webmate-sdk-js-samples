@@ -57,6 +57,7 @@ function getOptions(browser: Browser): WebdriverIO.RemoteOptions {
     };
 }
 
+// docs:start before-hook
 Before({timeout: 60000}, async function() {
     webmateSession = Webmate.startSession(MY_WEBMATE_APIKEY, WEBMATE_API_URL, MY_WEBMATE_PROJECTID);
 
@@ -65,11 +66,14 @@ Before({timeout: 60000}, async function() {
     let options = getOptions(browser);
     browserObj = await webdriverio.remote(options);
     webmateSession.addSeleniumSession(browserObj.sessionId);
+    // docs:start start
     testRun = await webmateSession.testMgmt.startExecutionWithBuilder(
         StoryCheckBuilder.builder("testIfInteractionPageIsTestable")).toPromise();
+    // docs:end start
 
     examplePageFormInteraction = new ExamplePageFormInteraction(browserObj);
 });
+// docs:end before-hook
 
 Given("the examplepage has been opened", async function() {
     await browserObj.url("http://www.examplepage.org/form_interaction");
@@ -109,11 +113,15 @@ When("she enters input into the text area", async function() {
 });
 
 Then("the test was successful", async function() {
+    // docs:start finish
     await testRun.finish(TestRunEvaluationStatus.PASSED);
+    // docs:end finish
 });
 
+// docs:start after-hook
 After(async function() {
     if (!!browserObj) {
         await browserObj.deleteSession();
     }
 })
+// docs:end after-hook
